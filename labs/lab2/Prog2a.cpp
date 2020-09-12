@@ -39,17 +39,71 @@ int main(int argc, char *argv[])
 
 	// declare a table[][] that can keep track of the
 	// cards dealt for each suit -- initialize to 0
+	int w =0;
+	// Clubs, Hears, Spades, Diamonds 
 	int table[4][13] ={0};
-	while (1) {
+	while (w < 10) {
 	  string card = random_card(verbose);
-	 	// I use hard tabs for everything and I'm not going to bother
+		w++;
+  		// I use hard tabs for everything and I'm not going to bother
 		// fixing this. It really do be that way tho
-		cout << card << " "; 
+		cout << card << " " << card[5] << " " << int(card[0]) << "\n";
+		// Check if not face card
+		// Equivelant to !isAlpha()
+		if(int(card[0] < 65 && card[1] != '0')){
+			// String format means if not face card suit letter
+			// is always at card[5]
+			int v = int(card[0]) - 48;
+			switch(card[5]){
+				case 'C':
+					table[0][v-1]=table[0][v-1] +1;
+					cout << table[0][v-1] << " ";
+					break;
+				case 'H':
+					table[1][v-1]+=1;
+					cout << table[1][v-1] << " ";
+					break;
+				case 'S':
+					table[2][v-1]+=1;
+					cout << table[2][v-1] << " ";
+					break;
+				case 'D':
+					table[3][v-1]+=1;
+					cout << table[3][v-1]<< " ";
+					break;
+				default:
+					cout << "Please panic\n";
+			}
+		}else if(card[0] == '1' && card[1] == '0'){
+			// Gotta right this whole other if statement for 10
+			// because it's a special little bitch
+			
+			int v = 10;
+			switch(card[6]){
+				case 'C':
+					table[0][v-1]=table[0][v-1] +1;
+					cout << table[0][v-1] << " ";
+					break;
+				case 'H':
+					table[1][v-1]+=1;
+					cout << table[1][v-1] << " ";
+					break;
+				case 'S':
+					table[2][v-1]+=1;
+					cout << table[2][v-1] << " ";
+					break;
+				case 'D':
+					table[3][v-1]+=1;
+					cout << table[3][v-1]<< " ";
+					break;
+				default:
+					cout << "Please panic\n";
+			}
+		}
 	  // reverse engineer card suit and face (value)
 	  // update accordingly: table[suit][value]++
 
       // break out of loop if stopping criteria met
-		break;
 	}
 	for(int i =0; i < 4; i++){
 		for(int j =0; j < 13; j++){
