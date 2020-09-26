@@ -1,0 +1,130 @@
+// Knox Crichton Exam 1 Part 2
+// Q-6 A
+char * strcpy(char *s1, const char *s2){
+	char *r;
+	r = s1;
+	do {
+		*s1++ = *s2++;
+	}while(*s2);
+	*s1 = '\0';
+	return r;
+}
+
+// Q-6 B 
+int strfind(const char *s, char c){
+	string w = string(s);
+	for(int i =0; i < strlen(w); i++){
+		if(w[i] == c){
+			return i;
+		}
+	}
+	return -1;
+}
+
+// Q-7 a
+bucket::bucket(int d){
+	data = d;
+}
+
+// Q-7 B
+bucket::operator<(int c){
+	if(c < this->data){
+		return true;
+	}else{
+		return false;
+	}
+}
+// Q-7 C
+bucket::operator+=(int d){
+	this->data +=d;
+}
+
+// Q-7 D
+template <class bucket>
+class bucket{
+	d;
+	bucket(&d);
+	get_data(&d);
+	operator+=(&d);
+
+	//Q-7 E
+	bucket operator<(const bucket x, &y){
+		return y < x.d;
+	}
+}
+
+// Q-8 A
+// P points to an element in a list of ints and can be incremented 
+// or decremented to point to different elements in that list
+
+// Q-8 B
+// 0 1 2 3 4 5 6 7
+
+// Q-8 C
+// 0 1 2 4 8 16 32 64
+
+// Q-8 D
+// 0 1 1 2 3 5 8 13
+
+// Q-8 E
+void print(list<int> l){
+	for(int i: l){
+		cout << i << "\n";
+	}
+}
+
+// Q-8 F
+void pritn(list<int> l){
+	int i = l.begin();
+	while(next(i, 1) != NULL){
+		cout << i << "\n";
+	}
+}
+
+// Q-8 G
+// I now get the feeling I did E wrong and am out of time to fix it, but I know
+// that the cout part is probably in the actual implementation
+
+// Q-9
+void copy(B, A){
+	it = A.begin();
+	int c = 0;
+	while(it.next() != NULL){
+		c++;
+	}
+	B.resize(c);
+	it = A.begin();
+	while(it.next != NULL){
+		B.push_back(it);
+	}
+}
+
+//Q-10 A
+// Assuming this is doing the only data diagonal down thing
+smatrix::smatrix(int x){
+	r = 1;
+	c =1;
+	while (c < x){
+		r++;
+		for(int i = r; i > 0; i--){
+			c+=r;
+		}
+	}
+	**buf = new (int**)[r];
+	for(int i =0l i< r; i++){
+		buf[i] = new(int*)[r];
+	}
+}
+//Q-10 B
+smatrix::~smatrix();
+for(int i =0; i < N; i++){
+	for(j = 0; j < N; j++){
+		free(**buf[i][j]);
+	}
+}
+
+// Q-10 C
+smatrix::char *operator[](int n){
+	*r = **buf[n];
+	return r;
+}
