@@ -1,0 +1,5 @@
+Sequence contains 19 prime numbers.
+All numbers in order appearance:
+  29  139  107  109   97   11  137   31   23   67  103  109   89   47   37   79   31  101  107
+Unique values in numerical order:
+  11   23   29   31   37   47   67   79   89   97  101  103  107  109  137  139
