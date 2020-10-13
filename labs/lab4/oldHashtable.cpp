@@ -5,7 +5,6 @@ using namespace std;
 
 typedef unsigned int uint;
 
-template <typename Tkey>
 class hash_table{
 	public:
 		hash_table();
@@ -21,13 +20,37 @@ class hash_table{
 		int max_inuse;
 
 		vector<Tkey> table;
+		struct key_line{
+			
+			key_line();
+			~key_line();
+			string key;
+			vector<int> ln;
+			bool inuse(){
+				if(key == NULL){
+					return false;
+				}else{
+					return true;
+				}
+			}
+			bool operator== (const key_line& x){
+				return x.key.compare(this->key);
+			}
+		};
 };
 
-template <typename Tkey>
-hash_table<Tkey>::hash_table(){
-	int N = 23;
-	table.assign(N, Tkey());
-
+//
+//	template <typename Tkey>
+//	hash_table<Tkey>::hash_table(){
+//		int N = 23;
+//		table.assign(N, Tkey());
+//
+//		num_inuse =0;
+//		max_inuse = N/2;
+//	}
+hash_table::hash_table(){
+	int N =23;
+	table.assign(N, key_line());
 	num_inuse =0;
 	max_inuse = N/2;
 }
