@@ -1,0 +1,15 @@
+Problem 1 
+a) O(n)
+b) O(1)
+c) O(n logn)
+d) O(n^2)
+e) O(n)
+f) O(n)
+
+Problem 2
+a) O(n)
+b) O(log n)
+
+Problem 3
+a) O(log n)
+b) O(log n)
