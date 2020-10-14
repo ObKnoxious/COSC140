@@ -26,7 +26,8 @@ class hash_table{
 		};
 
 	public:
-		hash_table();
+		hash_table(int x);
+		~hash_table();
 		void insert(const string &k, int ln);
 		const vector<int>& find(string &s);
 		void set_showstats(){
@@ -39,7 +40,7 @@ class hash_table{
 		}
 	private:
 		void showload(){
-			cout << "**N = " << table.size() << " load = " << fixed << setprecision(2) <<  float(num_inuse/table.size()) << "\n";
+			cout << "**N = " << table.size() << " load = " << fixed << setprecision(2) <<  ((float)num_inuse/(float)table.size()) << "\n";
 		}	
 		bool showstats;
 		int hash(const string &k);
@@ -53,15 +54,22 @@ class hash_table{
 
 };
 
-hash_table::hash_table(){
-	int N =23;
+hash_table::hash_table(int x){
+	int N = nextprime(x);
+	showstats = false;
 	collisions = 0;
 	table.assign(N, key_line());
 	num_inuse =0;
 	max_inuse = N/2;
 }
 
-
+hash_table::~hash_table(){
+	if(showstats){
+		cout << "Run stats ...\nNumber of slots used: " <<
+		num_inuse << "\nMax number of slots:  " << max_inuse <<
+		"\nNumber of collisions: " << collisions << "\n";
+	};
+}
 const vector<int>& hash_table::find(string &s){
 	return table[qprobe(s, false)].ln;
 }
@@ -75,7 +83,7 @@ void hash_table::insert(const string &s, int l){
 		table[index].ln.push_back(l);
 	}
 	if(num_inuse >= max_inuse){
-	//	insert_done();
+		insert_done();
 		resize();
 
 	}
@@ -106,10 +114,12 @@ int hash_table::nextprime(int N) {
 int hash_table::qprobe(const string &s, bool c){
 	int index = hash(s);
 	int k = 0;
-	while (!table[index].inuse() && table[index].key != s) {
+	while (table[index].inuse() && table[index].key != s) {
 		index += 2*(++k) - 1;
 		index = index % table.size();
-		collisions++;
+		if(c){
+			collisions++;
+		}
 	}
 		return index;
 }
@@ -130,8 +140,64 @@ void hash_table::resize() {
 	 }
 }
 
+char rPunct(char c){
+	if(ispunct(c)){
+		return ' ';
+	}else{
+		return c;
+	}
+}
+
 int main(int argc, char *argv[]){
-//	hash_table H;
+	int N =23;
+	string p;
+	bool s=false;
+	string an = "-N";
+	string as = "-showstats";
+	string ai = "-f";
+	for(int i =1; i < argc; i++){
+		if(argv[i]==an){
+			N = atoi(argv[++i]);
+		}
+		if(argv[i]==as){
+			s = true;
+		}
+		if(argv[i]==ai){
+			p = argv[++i];
+		}
+	}
+	int lnum =1;
+	ifstream f; 
+	f.open(p.c_str());
+	string lin;
+	vector<string> orig;
+	hash_table h(N);
+	if(s){
+		h.set_showstats();
+	}
+	while(getline(f, lin)){
+		orig.push_back(lin);
+		transform(lin.begin(), lin.end(), lin.begin(), rPunct);
+		istringstream lis(lin);
+		string word;
+		while(lis >> word){
+			h.insert(word, lnum);
+		}
+		lnum++;
+	}
+	h.insert_done();
+	string uin;
+	cout <<  "find> ";
+	while(cin >> uin){
+		vector<int> tp;
+		tp = h.find(uin);	
+		for(uint i =0; i < tp.size(); i++){
+			cout << tp.at(i) << ": " << orig.at(tp.at(i)-1) << "\n";
+		}
+		cout << "find> ";
+	}
+	cout << "\n";	
+	//	hash_table H;
 
 //	string key;
 //	while(cin >> key)
