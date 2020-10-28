@@ -1,0 +1,11 @@
+line 2: 9 5 3 out-of-bounds grid index
+line 4: 10 0 42 out-of-bounds grid index
+line 7: 12 8 25 out-of-bounds grid index
+line 9: 25 12 35 out-of-bounds grid index
+line 12: 33 6 87 out-of-bounds grid index
+line 14: 58 31 89 out-of-bounds grid index
+line 17: 67 1 5 out-of-bounds grid index
+line 18: 6 52 91 out-of-bounds grid index
+line 20: 78 7 2 out-of-bounds grid index
+line 22: 89 2 63 out-of-bounds grid index
+line 23: 89 4 7 out-of-bounds grid index

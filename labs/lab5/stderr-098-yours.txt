@@ -1,0 +1,1 @@
+CHECK COL Duplicate value 2 in row 6 col 0

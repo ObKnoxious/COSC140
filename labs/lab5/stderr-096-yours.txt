@@ -1,0 +1,1 @@
+Error in read function, or j out of bounds
