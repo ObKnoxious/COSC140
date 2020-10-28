@@ -1,5 +1,8 @@
-#include <sys/time.h>
+// Knox Crichton
+// 10/28
 
+#include <sys/time.h>
+#include <iomanip>
 #include <cstdlib>
 #include <cstring>
 #include <ctime>
@@ -8,6 +11,8 @@
 #include <fstream>
 #include <vector>
 using namespace std;
+
+const char *units[] = {"sec.", "msec.", "usec." };
 
 class omega {
   public:
@@ -37,13 +42,13 @@ float omega::get_sec() {
 
 string elapsed(float d, int i=0) {
  	if(d < 0.1){
-		return	elapsed(d*100, i+1);
-	}else{
-		stringstream rs;
-		rs << d << i;
-		string r = rs.str();
-		return r;
+		return	elapsed(d*1000, i+1);
 	}
+
+		ostringstream rs;
+		rs << setprecision(2) << fixed << d << " " << units[i];
+		return rs.str();
+	
 }
 
 class sudoku {
@@ -76,18 +81,16 @@ vector<int> sudoku::valid_values(int i, int j){
 	vector<int> r;
 	for(int v =1; v < 10; v++){
 		game[i][j] = v;
-		if(!(check_row(i, v)) || !(check_col(j, v)) || !(check_square(i, j , v))){
+		if(!(check_row(i, v)) && !(check_col(j, v)) && !(check_square(i, j , v))){
 			r.push_back(v);
 		}
+//		if(!(check_row(i,v) || check_col(j,v)) || check_square(i,j,v)){
+//			r.push_back(v);
+//		}
 	}
 	game[i][j] = t;
        return r;	
 }
-				
-
-	
-
-
 
 bool sudoku::check_row(int r, int v){
 	bool error = false;
@@ -95,12 +98,12 @@ bool sudoku::check_row(int r, int v){
 	for(int i =0; i < 9; i++){
 		if(game[r][i] == v){
 			f++;
-			if(f > 1){
-				error = true;
-				cerr << "CHECK ROW Duplicate value " << v << " in row " << r << " col " << i << "\n";
-				return error;
-			}
 		}
+	}
+
+	if(f > 1){
+		error = true;
+	//	cerr << "CHECK ROW Duplicate value " << v << " in row " << r << " col " << i << "\n";
 	}
 	return error;
 };
@@ -111,12 +114,12 @@ bool sudoku::check_col(int c, int v){
 	for(int i = 0; i < 9; i++){
 		if(game[i][c] == v){
 			f++;
-			if(f > 1){
-				error = true;
-				cerr << "CHECK COL Duplicate value " << v << " in row " << i << " col " << c << "\n";
-				return error;
-			}
 		}
+	}
+
+	if(f > 1){
+		error = true;
+	//	cerr << "CHECK COL Duplicate value " << v << " in row " << i << " col " << c << "\n";
 	}
 	return error;
 };
@@ -126,17 +129,17 @@ bool sudoku::check_square(int i, int j, int v){
 	int si = (i/3)*3;
 	bool error = false;
 	int f = 0;
-	for(int r = si; r < si+2; r++){
-		for(int c = sj; c < sj+2; c++){
+	for(int r = si; r < si+3; r++){
+		for(int c = sj; c < sj+3; c++){
 			if(game[r][c] == v){
 				f++;
-				if(f > 1){
-					error = true;
-					cerr << "CHECK SQUARE Duplicate value " << v << " in row " << i << " col " << j << "\n";
-					return error;
-				}
 			}
 		}
+	}
+
+	if(f > 1){
+		error = true;
+	//	cerr << "CHECK SQUARE Duplicate value " << v << " in row " << i << " col " << j << "\n";
 	}
 	return error;
 };
@@ -144,24 +147,11 @@ bool sudoku::check_square(int i, int j, int v){
 bool sudoku::error_check_uniqueness(){
 	bool error = false;
 	for(int r=0; r < 9; r++){
-		for(int v =1; v < 10; v++){
-			if(check_row(r,v)){
-				error = true;
-			}
-		}
-	}
-	for(int c =0; c< 9; c++){
-		for(int v =1; v < 10; v++){
-			if(check_col(c,v)){
-				error=true;
-			}
-		}
-	}
-	for(int i=0; i<9; i++){
-		for(int j=0; j<9; j++){
-			for(int v=1; v<10; v++){
-				if(check_square(i,j,v)){
-					error=true;
+		for(int c =0; c < 9; c++){
+			if(game[r][c] != 0){
+				if(check_row(r, game[r][c]) || check_col(c, game[r][c]) || check_square(r, c, game[r][c])){
+					cerr << "cell " << r << ' ' << c << ": non-unique value " << game[r][c] << "\n";
+					error = true;
 				}
 			}
 		}
@@ -192,7 +182,7 @@ void sudoku::solve() {
 			}
 		}
 	}
-	cout << "Made it passed the for loop!\n";
+	//cout << "Made it passed the for loop!\n";
 	if(solve(cells,0)){
 		display();
 	}
@@ -219,7 +209,7 @@ bool sudoku::solve(vector<int> cells, int c) {
 		return false;
 	}
 	for(int v = 0; v < values.size(); v++){
-		game[i][j] = v;
+		game[i][j] = values[v];
 		if(solve(cells, c+1)){
 			return true;
 		}	
@@ -245,16 +235,16 @@ void sudoku::read(const char *fname) {
 	while (fin >> i >> j >> v) {
 		if(i < 0 || i > 8 || j < 0 || j > 8){
 			error = true;
-			cerr << "Error in read function, or j out of bounds\n";
+			cerr << "line " << line << ": " << i << ' ' << j << ' ' << v << " out-of-bounds grid index\n";
 		}	
 	    	// error check grid indices
     		game[i][j] = v;
-		if(error){
-			exit(0);
-		}
 		line++;
 	}
 
+	if(error){
+		exit(0);
+	}
 	display();
 
 	if(error_check_value(true)){
@@ -350,12 +340,12 @@ bool sudoku::error_check_value(bool zero_valid){
 			if(zero_valid){
 				if(game[i][j] < 0 || game[i][j] > 9){
 					error=true;
-					cerr << "Out of range at game[" << i 	<< "][" << j << "]\n";
+					cerr << "cell " << i << ' ' << j << ": out-of-bounds data value " << game[i][j] << "\n";
 				}
 			}else{
 				if(game[i][j] < 1 || game[i][j] > 9){
 					error=true;
-					cerr << "Out of range at game[" << i	<< "][" << j << "]\n";
+					cerr << "cell " << i << ' ' << j << ": out-of-bounds data value " << game[i][j] << "\n";
 				}
 			}
 		}
