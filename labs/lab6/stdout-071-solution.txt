@@ -1,0 +1,32 @@
+ 0 2 3 4 5 9 10 11 12 13 14 15 16 17 18 19 20 21 22 24 27 30
+Print [key0:key1]: *** lower bound 9
+*** upper bound INF
+ 9 10 11 12 13 14 15 16 17 18 19 20 21 22 24 27 30
+Print [key0:key1]: *** lower bound 0
+*** upper bound INF
+ 0 2 3 4 5 9 10 11 12 13 14 15 16 17 18 19 20 21 22 24 27 30
+Print [key0:key1]: *** lower bound 0
+*** upper bound 22
+ 0 2 3 4 5 9 10 11 12 13 14 15 16 17 18 19 20 21
+Print [key0:key1]: *** lower bound 13
+*** upper bound 20
+ 13 14 15 16 17 18 19
+Print [key0:key1]: *** lower bound 4
+*** upper bound 9
+ 4 5
+Print [key0:key1]: *** lower bound 0
+*** upper bound 19
+ 0 2 3 4 5 9 10 11 12 13 14 15 16 17 18
+Print [key0:key1]: *** lower bound 5
+*** upper bound 27
+ 5 9 10 11 12 13 14 15 16 17 18 19 20 21 22 24
+Print [key0:key1]: *** lower bound 9
+*** upper bound 17
+ 9 10 11 12 13 14 15 16
+Print [key0:key1]: *** lower bound 9
+*** upper bound 14
+ 9 10 11 12 13
+Print [key0:key1]: *** lower bound 0
+*** upper bound 21
+ 0 2 3 4 5 9 10 11 12 13 14 15 16 17 18 19 20
+Print [key0:key1]: Print [key0:key1]: 

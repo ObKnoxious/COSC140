@@ -1,0 +1,59 @@
+ 1 2 5 6 7 8 9 11 12 13 14 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35 36 37 38 39 40 41 43 46 48 49 50 51 53 54 55 57 59 61 63 65 67 68 70 72 73 74 77 78 79 80 81 83 84 85 86 87 88 89
+Print [key0:key1]: Print [key0:key1]: Print [key0:key1]: Print [key0:key1]: Print [key0:key1]: *** lower bound 1
+*** upper bound 67
+ 1 2 5 6 7 8 9 11 12 13 14 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35 36 37 38 39 40 41 43 46 48 49 50 51 53 54 55 57 59 61 63 65
+Print [key0:key1]: *** lower bound 21
+*** upper bound 22
+ 21
+Print [key0:key1]: Print [key0:key1]: Print [key0:key1]: *** lower bound 53
+*** upper bound 83
+ 53 54 55 57 59 61 63 65 67 68 70 72 73 74 77 78 79 80 81
+Print [key0:key1]: *** lower bound 6
+*** upper bound 40
+ 6 7 8 9 11 12 13 14 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35 36 37 38 39
+Print [key0:key1]: *** lower bound 1
+*** upper bound 53
+ 1 2 5 6 7 8 9 11 12 13 14 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35 36 37 38 39 40 41 43 46 48 49 50 51
+Print [key0:key1]: *** lower bound 28
+*** upper bound 33
+ 28 29 30 31
+Print [key0:key1]: *** lower bound 16
+*** upper bound 59
+ 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35 36 37 38 39 40 41 43 46 48 49 50 51 53 54 55 57
+Print [key0:key1]: *** lower bound 13
+*** upper bound 48
+ 13 14 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35 36 37 38 39 40 41 43 46
+Print [key0:key1]: *** lower bound 11
+*** upper bound 46
+ 11 12 13 14 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35 36 37 38 39 40 41 43
+Print [key0:key1]: Print [key0:key1]: Print [key0:key1]: *** lower bound 9
+*** upper bound 51
+ 9 11 12 13 14 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35 36 37 38 39 40 41 43 46 48 49 50
+Print [key0:key1]: Print [key0:key1]: *** lower bound 1
+*** upper bound 33
+ 1 2 5 6 7 8 9 11 12 13 14 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31
+Print [key0:key1]: Print [key0:key1]: *** lower bound 33
+*** upper bound 65
+ 33 34 35 36 37 38 39 40 41 43 46 48 49 50 51 53 54 55 57 59 61 63
+Print [key0:key1]: Print [key0:key1]: Print [key0:key1]: *** lower bound 33
+*** upper bound 51
+ 33 34 35 36 37 38 39 40 41 43 46 48 49 50
+Print [key0:key1]: Print [key0:key1]: *** lower bound 57
+*** upper bound 80
+ 57 59 61 63 65 67 68 70 72 73 74 77 78 79
+Print [key0:key1]: *** lower bound 17
+*** upper bound 87
+ 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35 36 37 38 39 40 41 43 46 48 49 50 51 53 54 55 57 59 61 63 65 67 68 70 72 73 74 77 78 79 80 81 83 84 85 86
+Print [key0:key1]: *** lower bound 16
+*** upper bound 54
+ 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35 36 37 38 39 40 41 43 46 48 49 50 51 53
+Print [key0:key1]: *** lower bound 59
+*** upper bound 74
+ 59 61 63 65 67 68 70 72 73
+Print [key0:key1]: Print [key0:key1]: *** lower bound 26
+*** upper bound 77
+ 26 27 28 29 30 31 33 34 35 36 37 38 39 40 41 43 46 48 49 50 51 53 54 55 57 59 61 63 65 67 68 70 72 73 74
+Print [key0:key1]: *** lower bound 1
+*** upper bound 36
+ 1 2 5 6 7 8 9 11 12 13 14 16 17 18 19 20 21 22 23 25 26 27 28 29 30 31 33 34 35
+Print [key0:key1]: 
