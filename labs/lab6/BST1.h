@@ -30,9 +30,15 @@ class bst {
       public:
         //default constructor (no argument)
         //overloaded operators (++, *, ==, !=)
+	iterator();
+	iterator & operator ++();
+	TKey & operator * ();
+	bool operator == (const iterator &) const;
+	bool operator != (const iterator &) const;
       private:
         friend class bst<TKey>;
         //constructor (with argument)
+	iterator(node *);
 
         node *p;
     };
@@ -50,7 +56,8 @@ class bst {
     bool empty() { return Troot==NULL; }
 
     void insert(TKey &);
-
+	iterator begin();
+	iterator end();
     //iterator lower_bound(const TKey &);
     //iterator upper_bound(const TKey &);
 
@@ -69,6 +76,35 @@ class bst {
 	//clear(Troot);
 //}
 //bst<TKey>::node constructor goes here
+
+template <class TKey>
+bst<TKey>::iterator::iterator(){
+
+}
+template <class TKey>
+bst<TKey>::iterator::iterator(bst<TKey>::node *ptr){
+
+}
+template <class TKey>
+typename bst<TKey>::iterator & bst<TKey>::iterator::operator ++(){
+
+}
+template <class TKey>
+TKey & bst<TKey>::iterator::operator *(){
+
+}
+template <class TKey>
+TKey & bst<TKey>::iterator::operator ==(){
+
+}
+TKey & bst<TKey>::iterator::operator !=(){
+
+}
+template <class TKey>
+typename bst<TKey>::iterator bst<TKey>::begin(){
+
+}
+
 
 template <class TKey>
 void bst<TKey>::node::print()
