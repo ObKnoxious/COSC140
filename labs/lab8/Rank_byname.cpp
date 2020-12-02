@@ -32,7 +32,7 @@ string name_t::getName() const{
 	return name;
 }
 bool name_t::operator <(const name_t & c) const{
-	name < c.getName();
+	return	name < c.getName();
 }
 void name_t::print(int w) const{
 	cout << setw(w+3) << setfill('.') << left << name + " ";
@@ -59,19 +59,18 @@ void scores_t::insert(int n){
 }
 void scores_t::insert_done(){
 	if(scores.empty()){
+		cout << "Scores was empty! \n";
 		mean = 0.0;
 	}
 	else{
-		int sum = 0;
-		accumulate(scores.begin(), scores.end(), sum);
-		mean = sum/scores.size();
+		mean = (float(accumulate(scores.begin(), scores.end(), float()))/ (scores.size()));
 	}
 }
 void scores_t::print(){
 	for(int i=0; i<scores.size();i++){
 		cout << right << setfill(' ') << " " << setw(2) << scores[i];
 	}
-	cout << " : " << setprecision(2) << mean << "\n";
+	cout << " : " << setprecision(1) << fixed  << mean << "\n";
 }
 
 
@@ -98,7 +97,7 @@ int main(int argc, char *argv[]) {
 		istringstream line(d);
 		//string word;
 		line >> fn >> ln;
-		name_t nm(ln,fn);
+		name_t nm(fn,ln);
 		scores_t sc;
 		while(line >> cs){
 			sc.insert(cs);
@@ -124,7 +123,7 @@ int main(int argc, char *argv[]) {
 	}
   //close filename.txt
 	f.close();
-	cout << NS.size();
+	//cout << NS.size();
 	for(it = NS.begin(); it != NS.end(); it++){
 		it->first.print(w);
 		it->second.print();
